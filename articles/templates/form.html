@@ -2,6 +2,14 @@
 
 
 {% block body %}
+    
+    <!-- creat 누르면 게시물 생성 / update 누르면 게시물 수정 뜨게 하는 코드 -->
+    {% if request.resolver_match_url_name == 'update' %}
+        <h1>게시물 수정</h1>
+    {% else %}
+        <h1>게시물 생성</h1>
+    {% endif %}
+
     <!-- 제출버튼 눌렀을 때 form action 안에 있는 내용을 ""로 보냄 -->
     <!-- 만약 액션이 비어있으면 현재 우리 페이지로. 다시 create/로 -->
     <form action="" method="POST">

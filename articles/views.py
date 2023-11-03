@@ -66,7 +66,7 @@ def create(request):
 
     # 4. create.html을 랜더링
     # 9. create.html을 랜더링
-    return render(request, 'create.html', context)
+    return render(request, 'form.html', context)
 
 
 def delete(request, id):
@@ -83,7 +83,7 @@ def update(request, id):
 
     # 제출버튼 누른 후
     if request.method == 'POST':
-        # (첫째 인자: (data=) 생략. 새롭게 입력한 데이터 / 둘째인자: 과거의 데이터) 순서로 2개의 인자를 적어야 함
+        # (첫째 인자(생략된 data=): 새롭게 입력한 데이터 / 둘째인자(instance): 과거의 데이터) 순서로 2개의 인자를 적어야 함
         form = ArticleForm(request.POST, instance=article)
         if form.is_valid():
             form.save()
@@ -98,4 +98,4 @@ def update(request, id):
         'form': form,
     }
 
-    return render(request, 'update.html', context)
+    return render(request, 'form.html', context)
