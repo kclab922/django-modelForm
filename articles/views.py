@@ -75,3 +75,27 @@ def delete(request, id):
     article.delete()
 
     return redirect('articles:index')
+
+
+def update(request, id):
+
+    article = Article.objects.get(id=id)
+
+    # 제출버튼 누른 후
+    if request.method == 'POST':
+        # (첫째 인자: (data=) 생략. 새롭게 입력한 데이터 / 둘째인자: 과거의 데이터) 순서로 2개의 인자를 적어야 함
+        form = ArticleForm(request.POST, instance=article)
+        if form.is_valid():
+            form.save()
+            return redirect('articles:index')
+        
+    # update 버튼 누른 후
+    else:
+        # 빈 종이 만들기
+        form = ArticleForm(instance=article)
+
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'update.html', context)
