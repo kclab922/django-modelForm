@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class Aritcle(models.Model):
+class Article(models.Model):
     title = models.CharField(max_length = 50)
     content = models.TextField()
     # add(추가)가 되었을 때의 시간을 저장
