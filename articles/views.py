@@ -67,3 +67,11 @@ def create(request):
     # 4. create.html을 랜더링
     # 9. create.html을 랜더링
     return render(request, 'create.html', context)
+
+
+def delete(request, id):
+    # Article이라는 클래스 테이블의 id 컬럼이 여기서의 파란글씨 id
+    article = Article.objects.get(id=id)
+    article.delete()
+
+    return redirect('articles:index')
