@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+    <!-- 제출버튼 눌렀을 때 form action 안에 있는 내용을 ""로 보냄 -->
+    <!-- 만약 액션이 비어있으면 현재 우리 페이지로. 다시 create/로 -->
+    <form action="" method="POST">
+        {% csrf_token %}
+        <!-- 여기서 form이라는 변수는 모델폼 클래스를 views.py에서 인스턴스화해서 할당한 것 -->
+        {{ form }}
+        <input type="submit">
+    </form>
+{% endblock %}
